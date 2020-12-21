@@ -1,0 +1,657 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>FMS | Public Provident Fund</title>
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Animate Css -->
+    <link rel="stylesheet" href="plugins/animate-css/animate.css">
+    <!-- Icon Font css -->
+    <link rel="stylesheet" href="plugins/fontawesome/css/all.css">
+    <link rel="stylesheet" href="plugins/fonts/Pe-icon-7-stroke.css">
+    <!-- Themify icon Css -->
+    <link rel="stylesheet" href="plugins/themify/css/themify-icons.css">
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="top-header">
+    <!-- NAVBAR
+    ================================================= -->
+    <nav class="navbar navbar-expand-lg navbar-dark trans-navigation fixed-top navbar-togglable">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <h3>Finance Management System</h3>
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span>
+            </button>
+
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <!-- Links -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link js-scroll-trigger" href="index.html">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="loan.html" class="nav-link js-scroll-trigger">
+                            Loans
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="investment.html" class="nav-link js-scroll-trigger">
+                            Investments
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="about.html" class="nav-link js-scroll-trigger">
+                            About
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a href="contact.html" class="nav-link">
+                            Contact Us
+                        </a>
+                    </li>
+                </ul>
+            </div> <!-- / .navbar-collapse -->
+        </div> <!-- / .container -->
+    </nav>
+
+    <!-- HERO
+    ================================================== -->
+    <section class="banner-area py-5" id="banner-3">
+        <div class="overlay"></div>
+        <!-- Content -->
+        <div class="container">
+            <div class="row  align-items-center justify-content-center">
+                <div class="col-md-12 col-lg-6">
+                    <div class="banner-content text-center style-2">
+                        <!-- Heading -->
+                        <h1 class="display-4 mb-4 ">
+                            <b>Provident Fund</b> Investment Plan
+                        </h1>
+
+                        <!-- Button -->
+                        <a href="#" target="_blank" class="btn btn-primary btn-circled">
+                            Purchase now
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6 mt-5">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="bg-white rounded-lg shadow-sm p-5">
+                                <h3 class="alert alert-success text-center">PPF Calculator</h3>
+                                <form>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label>Investment Per Year (₹)</label>
+                                            </div>
+                                            <div class="col">
+                                                <input class="form-control" type="text" name="amount" id="amount" value="5000" placeholder="₹" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label>Number of Years (Years)</label>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="tenure">
+                                                        <option value="15" selected>15 Years</option>
+                                                        <option value="20">20 Years</option>
+                                                        <option value="25">25 Years</option>
+                                                        <option value="30">30 Years</option>
+                                                        <option value="35">35 Years</option>
+                                                        <option value="40">40 Years</option>
+                                                        <option value="45">45 Years</option>
+                                                        <option value="50">50 Years</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <buttons type="button" id="calculatePPF" class="btn btn-primary btn-block rounded-pill shadow-sm" onclick="calculatePPF();">Calculate</buttons>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </section>
+
+    <section class="section mt-3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="bg-grey rounded-lg p-5" style="height:100%">
+                        <h3 class="alert alert-success text-center">PPF Maturity Details</h3>
+                        <div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Total Investment</label>
+                                </div>
+                                <div class="col">
+                                    <p style="color: #21c87a;" id="investmentValue"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Tenure</label>
+                                </div>
+                                <div class="col">
+                                    <p style="color: #21c87a;" id="tenureValue"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Total Interest</label>
+                                </div>
+                                <div class="col">
+                                    <p style="color: #21c87a;" id="rateInterest"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col">
+                                    <label>Maturity Amount</label>
+                                </div>
+                                <div class="col">
+                                    <p style="color: #21c87a;" id="maturityValue"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm">Apply Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 bg-grey">
+                    <div class="blog-box">
+                        <h3 style="color:darkslategrey">What is Public Provident Fund?</h3>
+                        <div class="blog-content">
+                            <p style="text-align:justify">
+                                PPF or Public Provident Fund is a long-term fixed income savings scheme offered by the Government of India. It offers tax benefits as well as fixed and guaranteed returns. It is one of the tax-saving instruments under Section 80C of the Income Tax Act. The PPF tenure is 15 years and the account cannot be closed prematurely. However, the subscriber or depositor is allowed to withdraw part of the money after five years. You can withdraw 50% of your balance as at the end of the preceding financial year.
+                            </p>
+                        </div>
+                        <h3 style="color:darkslategrey">Benefits of PPF</h3>
+                        <div class="blog-content">
+                            <p style="text-align:justify">
+                                <ul class="price-features list-unstyled">
+                                    <li>PPF offers fixed and guaranteed returns</li>
+                                    <li>Long-term maturity period</li>
+                                    <li>Offers tax benefits at the time of investing, interest accrual and withdrawal</li>
+                                    <li>The entire amount can be withdrawn on maturity and is tax-free</li>
+                                </ul>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="blog-box">
+                        <h3 style="color:darkslategrey">How is the interest on a PPF calculated?</h3>
+                        <div class="blog-content">
+                            <p style="text-align:justify">
+                                The interest rate on PPF is announced by the government every quarter. It is linked to the rates on government securities and changes accordingly. The interest on the PPF is calculated based on your balance in your account before the fifth of every month. So ideally, make your deposit before the fifth of the month to get maximum benefit. Any deposit made after that will not earn interest for that particular month. Currently, the rate on PPF is 7.9% for the July to September 2019 quarter.
+                            </p>
+                        </div>
+
+                        <h3 style="color:darkslategrey">Tax Benefit of PPF Investments</h3>
+                        <div class="blog-content">
+                            <p style="text-align:justify">
+                                Investments in the Public Provident Fund are subject to tax deduction benefits up to the cumulative limit of Rs. 1.5 lakhs u/s 80C of the Income Tax Act, 1961. Moreover, PPF investments are classified as an EEE (exempt, exempt, exempt) which means that the principal investment, the maturity amount and the interest earned are completely exempt from taxation.
+                            </p>
+                        </div>
+                        <h3 style="color:darkslategrey">How does PPF account works?</h3>
+                        <div class="blog-content">
+                            <p style="text-align:justify">
+                                Commercial banks, such as Axis Bank, offer PPF account facility. You can even invest online in the PPF account if you have a savings bank account with Axis Bank and link it with the PPF account.
+                                The minimum amount that must be invested in a PPF account is Rs 500 and the maximum is Rs 1,50,000 lakh in a year. On maturity, the account can be extended for a 5-year period. There is no limit to the number of times the account can be extended.
+                                An individual can have only one PPF account in her name. But you can open a PPF account in your minor child’s name. However, remember that the total investment in both PPF accounts should not exceed Rs 1,50,000 lakh in a year. You can make a maximum of 12 deposits in a PPF account in a year. You can set up an auto debit from your salary account every month into your PPF account.
+                            </p>
+                        </div>
+                        <h3 style="color:darkslategrey">What are the recent PPF Interest Rates?</h3>
+                        <div class="blog-content">
+                            <p style="text-align:justify">
+                                As of Q1 FY 2020-21, the PPF interest rate is 7.1% p.a. and the PPF account balance is compounded annually. The interest rate applicable to the Public Provident Fund is decided by the Ministry of Finance and is liable to change every quarter. You can use the calculator to get PPF returns based on different interest rates. The following are the recent quarter-wise historic PPF interest rates for FY 2017-18 and FY 2018-19:
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="pricing">
+        <!-- Content -->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 text-center">
+                    <div class="section-heading">
+                        <!-- Heading -->
+                        <h2 class="section-title">
+                            Public-Provident Fund Plans
+                        </h2>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-sm-8 col-md-6">
+                    <div class="pricing-box">
+                        <h3>SBI PPF</h3>
+                        <div class="price-block">
+                            <h2><small>Returns upto</small>7.1%</h2>
+                        </div>
+
+                        <ul class="price-features list-unstyled">
+                            <li>Good long term investments of 15 years</li>
+                            <li>Deposit Amount as low as Rs.500 in one financial year</li>
+                            <li>Partial withdrawal facility</li>
+                            <li>Transfer funds online from linked Savings account</li>
+                            <li><a style="color: #21c87a" href="https://sbi.co.in/web/personal-banking/investments-deposits/govt-schemes/ppf" target="_blank">View More Details</a></li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-dark btn-circled">Purchase Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-md-6">
+                    <div class="pricing-box">
+                        <h3>Axis Bank PPF</h3>
+                        <div class="price-block">
+                            <h2><small>Returns upto</small>9.48%</h2>
+                        </div>
+
+                        <ul class="price-features list-unstyled">
+                            <li>Good long term investments of 15 years</li>
+                            <li>Deposit Amount as low as Rs.500 in one financial year</li>
+                            <li>Partial withdrawal facility</li>
+                            <li>Transfer funds online from linked Savings account</li>
+                            <li><a style="color: #21c87a" href="https://www.axisbank.com/retail/investment/public-provident-fund-ppf/features-benefits" target="_blank">View More Details</a></li>
+                        </ul>
+                        <a href="#" class="btn btn-primary btn-circled">Purchase Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-8 col-md-6">
+                    <div class="pricing-box">
+                        <h3>ICICI Bank PPF</h3>
+                        <div class="price-block">
+                            <h2><small>Returns upto</small>7.1%</h2>
+                        </div>
+
+                        <ul class="price-features list-unstyled">
+                            <li>Good long term investments of 15 years</li>
+                            <li>Deposit Amount as low as Rs.500 in one financial year</li>
+                            <li>Partial withdrawal facility</li>
+                            <li>Transfer funds online from linked Savings account</li>
+                            <li><a style="color: #21c87a" href="https://www.icicibank.com/Personal-Banking/investments/ppf/ppf.page" target="_blank">View More Details</a></li>
+                        </ul>
+
+                        <a href="#" class="btn btn-outline-dark btn-circled">Purchase Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-8 col-md-6">
+                    <div class="pricing-box">
+                        <h3>BOB PPF</h3>
+                        <div class="price-block">
+                            <h2><small>Returns upto</small>7.1%</h2>
+                        </div>
+
+                        <ul class="price-features list-unstyled">
+                            <li>Good long term investments of 15 years</li>
+                            <li>Deposit Amount as low as Rs.500 in one financial year</li>
+                            <li>Partial withdrawal facility</li>
+                            <li>Transfer funds online from linked Savings account</li>
+                            <li><a style="color: #21c87a" href="https://www.bankofbaroda.in/public-provident-fund.htm" target="_blank">View More Details</a></li>
+                        </ul>
+
+                        <a href="#" class="btn btn-outline-dark btn-circled">Purchase Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-8 col-md-6">
+                    <div class="pricing-box">
+                        <h3>BOI PPF</h3>
+                        <div class="price-block">
+                            <h2><small>Returns upto</small>7.1%</h2>
+                        </div>
+
+                        <ul class="price-features list-unstyled">
+                            <li>Good long term investments of 15 years</li>
+                            <li>Deposit Amount as low as Rs.500 in one financial year</li>
+                            <li>Partial withdrawal facility</li>
+                            <li>Transfer funds online from linked Savings account</li>
+                            <li><a style="color: #21c87a" href="https://www.bankofindia.co.in/Details/ppf" target="_blank">View More Details</a></li>
+                        </ul>
+
+                        <a href="#" class="btn btn-outline-dark btn-circled">Purchase Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-8 col-md-6">
+                    <div class="pricing-box">
+                        <h3>HDFC Bank PPF</h3>
+                        <div class="price-block">
+                            <h2><small>Returns upto</small>7.1%</h2>
+                        </div>
+
+                        <ul class="price-features list-unstyled">
+                            <li>Good long term investments of 15 years</li>
+                            <li>Deposit Amount as low as Rs.500 in one financial year</li>
+                            <li>Partial withdrawal facility</li>
+                            <li>Transfer funds online from linked Savings account</li>
+                            <li><a style="color: #21c87a" href="https://www.hdfcbank.com/personal/save/accounts/public-provident-fund" target="_blank">View More Details</a></li>
+                        </ul>
+
+                        <a href="#" class="btn btn-outline-dark btn-circled">Purchase Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-grey" id="service">
+        <div class="container">
+            <div class="row justify-content-center mt-3">
+                <div class="col-lg-7 pl-4 text-center">
+                    <div class="service-heading">
+                        <h1>Partners</h1>
+                        <p>Get a better deal and start saving money today</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-block media">
+                        <div class="service-icon">
+                            <img src="images/partners/sbi.png" width="70" />
+                        </div>
+                        <div class="service-inner-content media-body">
+                            <h4>State Bank of India</h4>
+                            <p>The State Bank of India is an Indian multinational, public sector banking and financial services statutory body.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-block media">
+                        <div class="service-icon">
+                            <img src="images/partners/post.png" width="70" />
+                        </div>
+                        <div class="service-inner-content media-body">
+                            <h4>Indian Post</h4>
+                            <p>The Department of Posts, trading as India Post, is a government-operated postal system in India.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-3 col-md-6">
+                    <div class="service-block media">
+                        <div class="service-icon">
+                            <img src="images/partners/bob.png" width="70" />
+                        </div>
+                        <div class="service-inner-content media-body">
+                            <h4>Bank of Baroda</h4>
+                            <p>Bank of Baroda is an Indian multinational, public sector banking and financial services company.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-3 col-md-6">
+                    <div class="service-block media ">
+                        <div class="service-icon">
+                            <img src="images/partners/patym.png" width="70" />
+                        </div>
+                        <div class="service-inner-content media-body">
+                            <h4>Patym</h4>
+                            <p>Paytm is an Indian e-commerce payment system and financial technology company.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-3 col-md-6">
+                    <div class="service-block media ">
+                        <div class="service-icon">
+                            <img src="images/partners/axis.png" width="70" />
+                        </div>
+                        <div class="service-inner-content media-body">
+                            <h4>Axis Bank</h4>
+                            <p>Axis Bank is the third-largest Indian bank offering a wide assortment of financial products.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-block media">
+                        <div class="service-icon">
+                            <img src="images/partners/paypal.png" width="70" />
+                        </div>
+                        <div class="service-inner-content media-body">
+                            <h4>PayPal</h4>
+                            <p>PayPal Holdings, Inc. is an American company operating a worldwide online payments system.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-block media">
+                        <div class="service-icon">
+                            <img src="images/partners/google.png" width="70" />
+                        </div>
+                        <div class="service-inner-content media-body">
+                            <h4>Google Pay</h4>
+                            <p>Google Pay is a digital wallet platform and online payment system developed by Google.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-block media">
+                        <div class="service-icon">
+                            <img src="images/partners/icici.png" width="70" />
+                        </div>
+                        <div class="service-inner-content media-body">
+                            <h4>ICICI Bank</h4>
+                            <p>ICICI Bank Limited is an Indian multinational banking and financial services company.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-block media">
+                        <div class="service-icon">
+                            <img src="images/partners/lic.png" width="70" />
+                        </div>
+                        <div class="service-inner-content media-body">
+                            <h4>LIC</h4>
+                            <p>Life Insurance Corporation of India is an Indian state-owned insurance group and investment corporation.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p class="pl-3">Want to know more about this? <a href="#">Contact us</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section" id="footer">
+        <div class="overlay footer-overlay"></div>
+        <!--Content -->
+        <div class="container">
+            <div class="row justify-content-start">
+                <div class="col-lg-4 col-sm-12">
+                    <div class="footer-widget">
+                        <!-- Brand -->
+                        <a href="#" class="footer-brand text-white">
+                            Finance Management System
+                        </a>
+                        <p>
+                            A place that provided a common service layer for all consumer services related to loans and investments.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 ml-lg-auto col-sm-12">
+                    <div class="footer-widget">
+                        <h3>Team</h3>
+                        <!-- Links -->
+                        <ul class="footer-links ">
+                            <li>
+                                <p>Riva Desai</p>
+                            </li>
+                            <li>
+                                <p>Hassan Kapadia</p>
+                            </li>
+                            <li>
+                                <p>Aditya Kataria</p>
+                            </li>
+                            <li>
+                                <p>Vishal Mistry</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-sm-6">
+                    <div class="footer-widget">
+                        <h3>About</h3>
+                        <!-- Links -->
+                        <ul class="footer-links ">
+                            <li>
+                                <a href="#">
+                                    Services
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Pricing
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Products Shop
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    Contact
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-sm-6">
+                    <div class="footer-widget">
+                        <h3>Socials</h3>
+                        <!-- Links -->
+                        <ul class="list-unstyled footer-links">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i>Facebook</a></li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-twitter"></i>Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-pinterest-p"></i>Pinterest
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-linkedin"></i>linkedin
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-youtube"></i>YouTube
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> <!-- / .row -->
+
+
+            <div class="row text-right pt-3">
+                <div class="col-lg-12">
+                    <!-- Copyright -->
+                    <p>
+                        &copy; Copyright <strong>Group-1 BE-III CO-E</strong> All rights reserved.
+                    </p>
+                </div>
+            </div> <!-- / .row -->
+        </div> <!-- / .container -->
+    </footer>
+    <!--  Page Scroll to Top  -->
+    <a class="scroll-to-top js-scroll-trigger" href="#top-header">
+        <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <!-- Main jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="plugins/bootstrap/js/popper.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Slick Slider -->
+    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <!-- Map Js -->
+    <script src="plugins/google-map/gmap3.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwIQh7LGryQdDDi-A603lR8NqiF3R_ycA"></script>
+
+    <script src="js/form/contact.js"></script>
+    <script src="js/theme.js"></script>
+
+    <script>
+        function calculatePPF() {
+            var amt = parseFloat(document.getElementById('amount').value);
+            var n = parseFloat(document.getElementById('tenure').value);
+
+            var val = amt * n;
+            document.getElementById('investmentValue').innerHTML = '<b>₹ ' + val + '</b>';
+            document.getElementById('tenureValue').innerHTML = '<b>' + n + ' Years</b>';
+            var r = 7.1;
+            r = r / 100;
+            var maturity = (amt * ((Math.pow((1 + r), n) - 1) / r)).toFixed(2);
+
+            var interest = (maturity - val).toFixed(2);
+            document.getElementById('rateInterest').innerHTML = '<b>₹ ' + interest + '</b>';
+            document.getElementById('maturityValue').innerHTML = '<b>₹ ' + maturity + '</b>';
+        }
+    </script>
+
+</body>
+</html>
